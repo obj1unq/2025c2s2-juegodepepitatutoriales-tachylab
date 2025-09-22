@@ -19,10 +19,18 @@ object pepita {
 		return energia
 	}
 
+	//Metodos condiciones
+	method loAtrapaSilvestre() {
+		return silvestre.position() == position
+	}
+
+	method llegoAlNido() {
+		return nido.position() == position
+	}
 	method image() {
-		if (silvestre.position() == position) {
+		if (self.loAtrapaSilvestre()) {
 			return "pepita-gris.png"
-		} else if (nido.position() == position) {
+		} else if (self.llegoAlNido()) {
 			return "pepita-grande.png"
 		} else {
 			return "pepita.png"

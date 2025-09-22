@@ -18,6 +18,5 @@ program pepitaGame {
 	game.addVisual(silvestre)
 	game.addVisual(nido)
 
-
 	game.start()	
 }
