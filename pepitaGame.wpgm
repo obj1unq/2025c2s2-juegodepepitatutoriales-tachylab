@@ -1,14 +1,23 @@
 import wollok.game.*
 import pepita.*
+import silvestre.*
+import extras.*
+import randomizer.*
+
 
 program pepitaGame {
 	game.title("Pepita") 	//Valor por defecto "Wollok Game"
 	game.height(10) 		//valor por defecto 5
 	game.width(10) 			//valor por defecto 5
 	game.cellSize(50) 		//valor por defecto 50
+	game.boardGround("fondo2.jpg")
 	//search assets in assets folder, for example, for the background
-	//Valor por defecto game.ground("ground.png")
+	//Elementos añadidos visualmente
 	
-	//game.addVisual(pepita)
+	game.addVisualCharacter(pepita)
+	game.addVisual(silvestre)
+	game.addVisual(nido)
+
+
 	game.start()	
 }
