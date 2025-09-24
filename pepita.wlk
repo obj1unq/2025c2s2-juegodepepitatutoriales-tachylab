@@ -40,7 +40,21 @@ object pepita {
 	method position() {
 		return position
 	}
+	//Metodos funcionales
+	method estado() {
+		return if (self.llegoAlNido()) {
+			ganadora
+		}
+		else if (self.loAtrapaSilvestre() or self.estaSinEnergia()){
+			muerta
+		}
+		else {
+			normal
+		}
+	}
 
+
+	//Metodos juegos
 	method position(_position) {
 		if (not self.estaSinEnergia()) {
 			position = _position
@@ -48,13 +62,7 @@ object pepita {
 	}
 	
 	method image() {
-		if (self.loAtrapaSilvestre() or self.estaSinEnergia()) {
-			return "pepita-gris.png"
-		} else if (self.llegoAlNido()) {
-			return "pepita-grande.png"
-		} else {
-			return "pepita.png"
-		}
+		return "pepita-" + self.estado() + ".png"
 	}
 
 	method text() {
@@ -66,3 +74,21 @@ object pepita {
 	}
 }
 
+
+object ganadora {
+	method nombre() {
+		return "ganadora"
+	}
+}
+
+object muerta {
+	method nombre() {
+		return "muerta"
+	}
+}
+
+object normal {
+	method nombre() {
+		return "normal"
+	}
+}
