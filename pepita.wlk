@@ -107,7 +107,7 @@ object pepita {
 
 object arriba {
 	method posicionNueva(posicionVieja) {
-		return if (posicionVieja.y() - 1 <= game.height() - 1) {
+		return if (posicionVieja.y() + 1 <= game.height() - 1) {
 			posicionVieja.up(1)
 		}
 		else {
