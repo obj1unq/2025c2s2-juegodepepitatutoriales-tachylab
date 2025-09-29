@@ -101,6 +101,7 @@ object pepita {
 	}*/
 
 	method mover(direccion) {
+		posicionAnterior = position
 		position = direccion.posicionNueva(position)
 		self.volar(1)
 	}
