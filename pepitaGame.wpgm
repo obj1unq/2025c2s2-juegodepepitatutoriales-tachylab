@@ -10,9 +10,7 @@ program pepitaGame {
 	game.width(10) 			//valor por defecto 5
 	game.cellSize(50) 		//valor por defecto 50
 	game.boardGround("fondo2.jpg")
-	//Eventos on tick
-	
-	game.onTick(800, "gravedad", {pepita.descender()})
+
 	//Elementos añadidos visualmente
 	
 	game.addVisual(pepita)
@@ -20,10 +18,10 @@ program pepitaGame {
 	game.addVisual(nido)
 
 	//Keyboard methods
-	keyboard.right().onPressDo({pepita.moverDerecha()})
-	keyboard.left().onPressDo({pepita.moverIzquierda()})
-	keyboard.up().onPressDo({pepita.ascender()})
-	keyboard.down().onPressDo({pepita.descender()})
+	keyboard.right().onPressDo({pepita.mover(derecha)})
+	keyboard.left().onPressDo({pepita.mover(izquierda)})
+	keyboard.up().onPressDo({pepita.mover(arriba)})
+	keyboard.down().onPressDo({pepita.mover(abajo)})
 
 
 	game.start()	

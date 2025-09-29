@@ -1,5 +1,8 @@
 import wollok.game.*
 import pepita.*
+import silvestre.*
+import extras.*
+
 
 program tutorial2 {
     game.title("Pepita") 	//Valor por defecto "Wollok Game"
@@ -10,12 +13,23 @@ program tutorial2 {
 
     pepita.energia(500)
     game.addVisualCharacter(pepita)
+    game.addVisual(silvestre)
+    game.addVisual(nido)
+    game.addVisual(muro1)
+    game.addVisual(muro2)
+    game.addVisual(muro3)
 
+	//Eventos on tick
+	
+	game.onTick(800, "gravedad", {pepita.caer()})
 
-    keyboard.up().onPressDo({pepita.volar(1)})
-    keyboard.down().onPressDo({pepita.volar(1)})
-    keyboard.right().onPressDo({pepita.volar(1)})
-    keyboard.left().onPressDo({pepita.volar(1)})
+    //Keyboard methods
+	keyboard.right().onPressDo({pepita.mover(derecha)})
+	keyboard.left().onPressDo({pepita.mover(izquierda)})
+	keyboard.up().onPressDo({pepita.mover(arriba)})
+	keyboard.down().onPressDo({pepita.mover(abajo)})
+
+    //Colision
 
     game.start()
 
