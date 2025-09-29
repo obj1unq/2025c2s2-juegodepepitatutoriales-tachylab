@@ -40,6 +40,26 @@ object pepita {
 	method position() {
 		return position
 	}
+
+	method estaEnUnBordeEjeX() {
+		return  (0 < position.x()) and (position.x() < game.width() - 1)
+	}
+
+	method estaEnUnBordeEjeY() {
+		return ((0 < position.y()) and (position.y() < game.height() - 1))
+	}
+
+	method estaEnElTablero() {
+		return self.estaEnUnBordeEjeX() and self.estaEnUnBordeEjeY()
+	}
+
+	method validarMovimiento() {
+		if (not self.estaEnElTablero()) {
+			self.error("Pepita está en un borde")
+		}
+	}
+
+
 	//Metodos funcionales
 	method estado() {
 		return if (self.llegoAlNido()) {
@@ -53,6 +73,22 @@ object pepita {
 		}
 	}
 
+	method ascender() {
+		self.validarMovimiento()
+		position = position.up(1)
+	}
+	method descender() {
+		self.validarMovimiento()
+		position = position.down(1)
+	}
+	method moverDerecha() {
+		self.validarMovimiento()
+		position = position.right(1)
+	}
+	method moverIzquierda() {
+		self.validarMovimiento()
+		position = position.left(1)
+	}
 
 	//Metodos juegos
 	method position(_position) {
@@ -63,14 +99,6 @@ object pepita {
 	
 	method image() {
 		return "pepita-" + self.estado() + ".png"
-	}
-
-	method text() {
-		return "" + energia + ""
-	}
-
-	method textColor() {
-		return "00FF00FF"
 	}
 }
 

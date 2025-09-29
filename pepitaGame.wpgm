@@ -10,12 +10,21 @@ program pepitaGame {
 	game.width(10) 			//valor por defecto 5
 	game.cellSize(50) 		//valor por defecto 50
 	game.boardGround("fondo2.jpg")
-	//search assets in assets folder, for example, for the background
+	//Eventos on tick
+	
+	game.onTick(800, "gravedad", {pepita.descender()})
 	//Elementos añadidos visualmente
 	
-	game.addVisualCharacter(pepita)
+	game.addVisual(pepita)
 	game.addVisual(silvestre)
 	game.addVisual(nido)
+
+	//Keyboard methods
+	keyboard.right().onPressDo({pepita.moverDerecha()})
+	keyboard.left().onPressDo({pepita.moverIzquierda()})
+	keyboard.up().onPressDo({pepita.ascender()})
+	keyboard.down().onPressDo({pepita.descender()})
+
 
 	game.start()	
 }
