@@ -7,7 +7,7 @@ object nido {
 }
 
 object muro1 {
-    var property position = game.at(4,5)
+    var property position = game.at(7,9)
     var property image = "muro.png"
 
     method chocaConPepita() {
@@ -16,7 +16,7 @@ object muro1 {
 }
 
 object muro2 {
-    var property position = game.at(4,4)
+    var property position = game.at(7,8)
     var property image = "muro.png"
 
     method chocaConPepita() {
@@ -25,7 +25,7 @@ object muro2 {
 }
 
 object muro3 {
-    var property position = game.at(4,3)
+    var property position = game.at(7,7)
     var property image = "muro.png"
 
     method chocaConPepita() {

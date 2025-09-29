@@ -101,18 +101,18 @@ object pepita {
 	}*/
 
 	method mover(direccion) {
-		direccion.mover()
+		position = direccion.posicionNueva(position)
 		self.volar(1)
 	}
 
 	method caer() {
-		abajo.mover()
+		position = abajo.posicionNueva(position)
 	}
 
 	method volvePosicionAnterior() {
 		position = posicionAnterior
 	}
-	
+
 	//Metodos juegos
 	method position(_position) {
 		self.validarSinEnergia()
@@ -128,36 +128,45 @@ object pepita {
 //Movimientos posibles de pepita
 
 object arriba {
-	method mover() {
-		if (pepita.noEstaEnUnBordeEjeY()) {
-			pepita.position(pepita.position().up(1))
+	method posicionNueva(posicionVieja) {
+		return if (posicionVieja.y() - 1 <= game.height() - 1) {
+			posicionVieja.up(1)
 		}
-
+		else {
+			posicionVieja
+		}
 	}
-
 }
 
 object abajo {
-	method mover() {
-		if (pepita.noEstaEnUnBordeEjeY()) {
-			pepita.position(pepita.position().down(1))
+	method posicionNueva(posicionVieja) {
+		return if (posicionVieja.y() - 1 >= 0) {
+			posicionVieja.down(1)
+		}
+		else {
+			posicionVieja
 		}
 	}
 }
 
 object izquierda {
-	method mover() {
-		if (pepita.noEstaEnUnBordeEjeX()) {
-			pepita.position(pepita.position().left(1))
+	method posicionNueva(posicionVieja) {
+		return if (posicionVieja.x() - 1 >= 0) {
+			posicionVieja.left(1)
+		}
+		else {
+			posicionVieja
 		}
 	}
-
 }
 
 object derecha {
-	method mover() {
-		if (pepita.noEstaEnUnBordeEjeX()) {
-			pepita.position(pepita.position().right(1))
+	method posicionNueva(posicionVieja) {
+		return if (posicionVieja.x() + 1 <= game.width() -1) {
+			posicionVieja.right(1)
+		}
+		else {
+			posicionVieja
 		}
 	}
 }

@@ -12,7 +12,7 @@ program tutorial2 {
 	game.boardGround("fondo2.jpg")
 
     pepita.energia(500)
-    game.addVisualCharacter(pepita)
+    game.addVisual(pepita)
     game.addVisual(silvestre)
     game.addVisual(nido)
     game.addVisual(muro1)
@@ -23,13 +23,14 @@ program tutorial2 {
 	
 	game.onTick(800, "gravedad", {pepita.caer()})
 
-    //Keyboard methods
+	//Keyboard methods
 	keyboard.right().onPressDo({pepita.mover(derecha)})
 	keyboard.left().onPressDo({pepita.mover(izquierda)})
 	keyboard.up().onPressDo({pepita.mover(arriba)})
 	keyboard.down().onPressDo({pepita.mover(abajo)})
 
-    //Colision
+    //Colisiones
+    game.onCollideDo(pepita, {otro => otro.chocaConPepita()})
 
     game.start()
 
