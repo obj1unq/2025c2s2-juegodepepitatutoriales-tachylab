@@ -71,39 +71,16 @@ object pepita {
 		}
 	}
 
-	/*method moverArriba() {
-		if (self.noEstaEnUnBordeDelTablero()) {
-			position = position.up(1)
-			self.volar(1)
-		}
-
-	}
-
-	method moverAbajo() {
-		if (self.noEstaEnUnBordeDelTablero()) {
-			position = position.down(1)
-			self.volar(1)
-		}
-	}
-
-	method moverDerecha() {
-		if (self.noEstaEnUnBordeDelTablero()) {
-			position = position.right(1)
-			self.volar(1)
-		}
-	}
-
-	method moverIzquierda() {
-		if (self.noEstaEnUnBordeDelTablero()) {
-			position = position.left(1)
-			self.volar(1)
-		}
-	}*/
-
 	method mover(direccion) {
 		posicionAnterior = position
 		position = direccion.posicionNueva(position)
-		self.volar(1)
+		self.volarSiSeMovio()
+	}
+
+	method volarSiSeMovio() {
+		if (posicionAnterior != position) {
+			self.volar(1)
+		}
 	}
 
 	method caer() {
