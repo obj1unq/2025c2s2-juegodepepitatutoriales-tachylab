@@ -33,7 +33,7 @@ object manzana {
 }
 
 object alpiste {
-	var property position = game.at(7,9)
+	var property position = game.at(7,5)
 
 	var property image = "alpiste.png"
 
