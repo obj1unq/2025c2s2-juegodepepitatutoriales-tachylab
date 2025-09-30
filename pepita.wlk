@@ -1,7 +1,7 @@
 import silvestre.*
 import extras.*
 import wollok.game.*
-
+import comidas.*
 
 object pepita {
 	var energia = 100
@@ -10,8 +10,11 @@ object pepita {
 
 	var posicionAnterior = position
 
+	const comidasDevoradas = #{}
+
 	method comer(comida) {
 		energia = energia + comida.energiaQueOtorga()
+		comidasDevoradas.add(comida)
 	}
 
 	method volar(kms) {
@@ -39,24 +42,14 @@ object pepita {
 		return nido.position() == position
 	}
 
-	method position() {
-		return position
-	}
-
-	method noEstaEnUnBordeEjeX() {
-		//return  (0 < position.x()) and (position.x() < game.width() - 1)
-		return position.x().between(1, game.width() - 2)
-	}
-
-	method noEstaEnUnBordeEjeY() {
-		//return ((0 < position.y()) and (position.y() < game.height() - 1))
-		return position.y().between(1, game.width() - 2)
-	}
-
 	method validarSinEnergia() {
 		if (self.estaSinEnergia()) {
 			self.perdiste()
 		}
+	}
+
+	method comisteTodaLaComida() {
+		return comidasDevoradas == conjuntoComidas.comidasTotales()
 	}
 	//Metodos funcionales
 	method estado() {
@@ -92,11 +85,27 @@ object pepita {
 	}
 
 	method perdiste() {
-		game.say(self, "¡PERDI")
-		game.onTick(2000, "pepitaPerder", {game.stop()})
+		game.say(self, "¡PERDI!")
+		game.schedule(2000, {game.stop()})
+	}
+
+	method ganaste() {
+		game.say(self, "¡GANE!")
+		game.schedule(2000, {game.stop()})
+	}
+
+	method ganasteElJuego() {
+		if (self.comisteTodaLaComida()) {
+			self.ganaste()
+		}
 	}
 
 	//Metodos juegos
+
+	method position() {
+		return position
+	}
+
 	method position(_position) {
 		self.validarSinEnergia()
 		posicionAnterior = position

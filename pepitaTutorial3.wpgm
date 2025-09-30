@@ -1,6 +1,7 @@
 import pepita.*
 import extras.*
 import silvestre.*
+import comidas.*
 import wollok.game.*
 
 program tutorial3 {
@@ -17,6 +18,8 @@ program tutorial3 {
     game.addVisual(muro1)
     game.addVisual(muro2)
     game.addVisual(muro3)
+	game.addVisual(manzana)
+	game.addVisual(alpiste)
 
 	//Eventos on tick
 	
@@ -31,4 +34,5 @@ program tutorial3 {
     //Colisiones
     game.onCollideDo(pepita, {otro => otro.chocaConPepita()})
 
+	game.start()
 }
