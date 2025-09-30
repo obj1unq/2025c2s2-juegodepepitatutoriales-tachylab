@@ -6,4 +6,8 @@ object silvestre {
     method position() {
         return game.at(3.max(pepita.position().x()), 0)
     }
+
+    method chocaConPepita() {
+        pepita.perdiste()
+    }
 }

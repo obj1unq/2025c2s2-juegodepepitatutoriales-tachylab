@@ -55,7 +55,7 @@ object pepita {
 
 	method validarSinEnergia() {
 		if (self.estaSinEnergia()) {
-			game.stop()
+			self.perdiste()
 		}
 	}
 	//Metodos funcionales
@@ -89,6 +89,11 @@ object pepita {
 
 	method volvePosicionAnterior() {
 		position = posicionAnterior
+	}
+
+	method perdiste() {
+		game.say(self, "¡PERDI")
+		game.onTick(2000, "pepitaPerder", {game.stop()})
 	}
 
 	//Metodos juegos
