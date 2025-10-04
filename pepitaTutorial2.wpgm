@@ -4,18 +4,24 @@ import silvestre.*
 import extras.*
 
 
-program pepitaGame {
-	game.title("Pepita") 	//Valor por defecto "Wollok Game"
+program tutorial2 {
+    game.title("Pepita") 	//Valor por defecto "Wollok Game"
 	game.height(10) 		//valor por defecto 5
 	game.width(10) 			//valor por defecto 5
 	game.cellSize(50) 		//valor por defecto 50
 	game.boardGround("fondo2.jpg")
 
-	//Elementos añadidos visualmente
+    pepita.energia(500)
+    game.addVisual(pepita)
+    game.addVisual(silvestre)
+    game.addVisual(nido)
+    game.addVisual(muro1)
+    game.addVisual(muro2)
+    game.addVisual(muro3)
+
+	//Eventos on tick
 	
-	game.addVisual(pepita)
-	game.addVisual(silvestre)
-	game.addVisual(nido)
+	game.onTick(800, "gravedad", {pepita.caer()})
 
 	//Keyboard methods
 	keyboard.right().onPressDo({pepita.mover(derecha)})
@@ -23,6 +29,9 @@ program pepitaGame {
 	keyboard.up().onPressDo({pepita.mover(arriba)})
 	keyboard.down().onPressDo({pepita.mover(abajo)})
 
+    //Colisiones
+    game.onCollideDo(pepita, {otro => otro.chocaConPepita()})
 
-	game.start()	
+    game.start()
+
 }

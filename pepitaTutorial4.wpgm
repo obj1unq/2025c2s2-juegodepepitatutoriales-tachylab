@@ -1,21 +1,16 @@
-import wollok.game.*
 import pepita.*
-import silvestre.*
-import extras.*
+import comidas.*
+import wollok.game.*
 
-
-program pepitaGame {
-	game.title("Pepita") 	//Valor por defecto "Wollok Game"
+program tutorial3 {
+    game.title("Pepita") 	//Valor por defecto "Wollok Game"
 	game.height(10) 		//valor por defecto 5
 	game.width(10) 			//valor por defecto 5
 	game.cellSize(50) 		//valor por defecto 50
 	game.boardGround("fondo2.jpg")
 
-	//Elementos añadidos visualmente
-	
-	game.addVisual(pepita)
-	game.addVisual(silvestre)
-	game.addVisual(nido)
+    pepita.energia(500)
+    game.addVisual(pepita)
 
 	//Keyboard methods
 	keyboard.right().onPressDo({pepita.mover(derecha)})
@@ -23,6 +18,8 @@ program pepitaGame {
 	keyboard.up().onPressDo({pepita.mover(arriba)})
 	keyboard.down().onPressDo({pepita.mover(abajo)})
 
+    //Colisiones
+    game.onCollideDo(pepita, {otro => otro.chocaConPepita()})
 
-	game.start()	
+	game.start()
 }
