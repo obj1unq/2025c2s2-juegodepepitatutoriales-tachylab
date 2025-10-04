@@ -18,7 +18,7 @@ object pepita {
 	}
 
 	method volar(kms) {
-		energia = 0.max(energia - 9 * kms) 
+		energia = energia - (9 * kms)
 	}
 	
 	method energia() {
@@ -35,7 +35,7 @@ object pepita {
 	}
 
 	method estaSinEnergia() {
-		return energia <= 0
+		return energia < 9
 	}
 
 	method llegoAlNido() {
@@ -84,14 +84,19 @@ object pepita {
 		position = posicionAnterior
 	}
 
+	method terminarJuego() {
+		game.removeTickEvent("gravedad")
+		game.schedule(2000, {game.stop()})
+	}
+
 	method perdiste() {
 		game.say(self, "¡PERDI!")
-		game.schedule(2000, {game.stop()})
+		self.terminarJuego()
 	}
 
 	method ganaste() {
 		game.say(self, "¡GANE!")
-		game.schedule(2000, {game.stop()})
+		self.terminarJuego()
 	}
 
 	method ganasteElJuego() {
