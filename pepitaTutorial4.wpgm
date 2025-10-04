@@ -1,5 +1,5 @@
 import pepita.*
-import comidas.*
+import comidasClases.*
 import wollok.game.*
 
 program tutorial3 {
@@ -9,8 +9,21 @@ program tutorial3 {
 	game.cellSize(50) 		//valor por defecto 50
 	game.boardGround("fondo2.jpg")
 
-    pepita.energia(500)
+	//Instancias de clases Definidas
+	const manzana1 = new Manzana()
+	const manzana2 = new Manzana()
+	const manzana3 = new Manzana()
+	const alpiste1 = new Alpiste()
+
+	//Pepita
+	pepita.energia(500)
     game.addVisual(pepita)
+	
+	//Añadir las instancias
+	game.addVisual(manzana1)
+	game.addVisual(manzana2)
+	game.addVisual(manzana3)
+	game.addVisual(alpiste1)
 
 	//Keyboard methods
 	keyboard.right().onPressDo({pepita.mover(derecha)})

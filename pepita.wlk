@@ -2,6 +2,7 @@ import silvestre.*
 import extras.*
 import wollok.game.*
 import comidas.*
+import comidasClases.*
 
 object pepita {
 	var energia = 100
@@ -31,7 +32,7 @@ object pepita {
 
 	//Metodos condiciones
 	method loAtrapaSilvestre() {
-		return silvestre.position() == position
+		return game.hasVisual(silvestre) and silvestre.position() == position
 	}
 
 	method estaSinEnergia() {
@@ -39,7 +40,7 @@ object pepita {
 	}
 
 	method llegoAlNido() {
-		return nido.position() == position
+		return game.hasVisual(nido) and nido.position() == position
 	}
 
 	method validarSinEnergia() {
