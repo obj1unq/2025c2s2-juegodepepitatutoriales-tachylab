@@ -2,10 +2,10 @@ import wollok.game.*
 import randomizer.*
 import pepita.*
 
-/*class Alimento {
+class Alimento {
     var property position = randomizer.position()
 
-    method energiaQueAporta()
+    method energiaQueOtorga()
 
     method chocaConPepita() {
         pepita.comer(self)
@@ -21,7 +21,7 @@ class Manzana inherits Alimento {
 
     var madurez = 1
 
-    override method energiaQueAporta() {
+    override method energiaQueOtorga() {
         return aporteBase * madurez
     }
 
@@ -31,16 +31,18 @@ class Manzana inherits Alimento {
 }
 
 class Alpiste inherits Alimento {
+    var property image = "alpiste.png"
+
     const peso = (40 .. 100).anyOne()
 
-    override method energiaQueAporta() {
+    override method energiaQueOtorga() {
         return peso
     }
 
 }
-*/
 
-class Manzana {
+
+/*class Manzana {
     const aporteBase = 5
     var madurez = 1
     
@@ -77,4 +79,4 @@ class Alpiste {
         pepita.comer(self)
 		game.removeVisual(self)
     }
-}
+}*/
