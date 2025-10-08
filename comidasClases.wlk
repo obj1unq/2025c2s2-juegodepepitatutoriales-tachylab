@@ -2,19 +2,73 @@ import wollok.game.*
 import randomizer.*
 import pepita.*
 
-class Alimento {
-    var property position = randomizer.position()
+
+object manzanaFactory {
+    method crear() {
+        new Manzana(position = randomizer.emptyPosition())
+
+    }
+}
+
+object alpisteFactory {
+    method crear() {
+        new Alpiste(position = randomizer.emptyPosition(), peso = (40 .. 100).anyOne())
+
+    }
+}
+
+
+object comidas {
+
+    const factories = [alpisteFactory, manzanaFactory]
+
+    const enElTablero = #{}
+
+    method liberarEspacio(comida) {
+        enElTablero.remove(comida)
+    }
+
+    method maximo() {
+        return 3
+    }
+
+    method crearComida() {
+        return factories.anyOne().crear()
+    }
+
+    method nuevaComida() {
+        if (enElTablero.size() < self.maximo()) {
+            const comida = self.crearComida()
+            game.addVisual(comida)
+            enElTablero.add(comida)
+        }
+    }
+
+    method comenzar() {
+        game.onTick(3000, "COMIDAS", {self.nuevaComida()})
+    }
+}
+
+
+
+class Comida {
+    const position
+
+    method position() {
+        return position
+    }
 
     method energiaQueOtorga()
 
     method chocaConPepita() {
         pepita.comer(self)
+        comidas.liberarEspacio(self)
         game.removeVisual(self)
     }
 }
 
 
-class Manzana inherits Alimento {
+class Manzana inherits Comida {
     var property image = "manzana.png"
 
     const aporteBase = 5
@@ -30,10 +84,10 @@ class Manzana inherits Alimento {
     }
 }
 
-class Alpiste inherits Alimento {
+class Alpiste inherits Comida {
     var property image = "alpiste.png"
 
-    const peso = (40 .. 100).anyOne()
+    const peso
 
     override method energiaQueOtorga() {
         return peso

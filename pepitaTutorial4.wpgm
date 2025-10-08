@@ -9,21 +9,22 @@ program tutorial3 {
 	game.cellSize(50) 		//valor por defecto 50
 	game.boardGround("fondo2.jpg")
 
-	//Instancias de clases Definidas
+	/*Instancias de clases Definidas
 	const manzana1 = new Manzana()
 	const manzana2 = new Manzana()
 	const manzana3 = new Manzana()
 	const alpiste1 = new Alpiste()
-
+	*/
 	//Pepita
 	pepita.energia(500)
     game.addVisual(pepita)
 	
-	//Añadir las instancias
+	/*Añadir las instancias
 	game.addVisual(manzana1)
 	game.addVisual(manzana2)
 	game.addVisual(manzana3)
 	game.addVisual(alpiste1)
+	*/
 
 	//Keyboard methods
 	keyboard.right().onPressDo({pepita.mover(derecha)})
@@ -32,7 +33,10 @@ program tutorial3 {
 	keyboard.down().onPressDo({pepita.mover(abajo)})
 
     //Colisiones
-    game.onCollideDo(pepita, {otro => otro.chocaConPepita()})
+    game.onCollideDo(pepita, {otro => otro.chocaConPepita()}) //Comportamiento de los objetos visuales al colisionar con pepita
+
+	//Eventos periodicos
+	comidas.comenzar() //Empiezan a aparecer comidas en el tablero
 
 	game.start()
 }
