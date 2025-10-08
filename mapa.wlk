@@ -20,6 +20,7 @@ object p {
 object n {
     method dibujar(newPosition) {
         nido.position(newPosition)
+        game.addVisual(nido)
     }
 }
 
@@ -27,16 +28,16 @@ object n {
 object mapa {
 
     const dibujo = [
-   [_, _, _, m, _, _, _, _, _, _],
-   [_, _, _, m, _, _, _, _, n, _],
-   [_, _, _, m, _, _, _, _, _, _],
-   [_, _, _, m, _, _, _, _, _, _],
-   [_, _, _, m, _, _, _, _, _, _],
-   [_, _, _, m, m, m, m, _, _, _],
-   [p, _, _, _, _, _, _, _, _, _],
-   [_, _, _, _, _, _, _, _, _, _],
-   [_, _, _, _, _, _, _, _, _, _],
-   [_, _, _, _, _, _, _, _, _, _]
+    [_, _, _, m, _, _, _, _, _, _],
+    [_, _, _, m, _, _, _, _, n, _],
+    [_, _, _, m, _, _, _, _, _, _],
+    [_, _, _, m, _, _, _, _, _, _],
+    [_, _, _, m, _, _, _, _, _, _],
+    [_, _, _, m, m, m, m, _, _, _],
+    [p, _, _, _, _, _, _, _, _, _],
+    [_, _, _, _, _, _, _, _, _, _],
+    [_, _, _, _, _, _, _, _, _, _],
+    [_, _, _, _, _, _, _, _, _, _]
     ].reverse() //Dibujo del mapa entero como una matriz, modelado como una lista de listas
 
     method construir() {
@@ -73,6 +74,14 @@ object mapa {
 
 class Muro {
     const property position
+
+    method image() {
+        return "muro.png"
+    }
+
+    method chocaConPepita() {
+        pepita.volvePosicionAnterior()
+    }
 }
 
 

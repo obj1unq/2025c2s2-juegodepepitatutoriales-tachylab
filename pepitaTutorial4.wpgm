@@ -4,15 +4,15 @@ import wollok.game.*
 import extras.*
 import mapa.*
 
-program tutorial3 {
+program tutorial4 {
     game.title("Pepita") 	//Valor por defecto "Wollok Game"
 	game.height(10) 		//valor por defecto 5
 	game.width(10) 			//valor por defecto 5
 	game.cellSize(50) 		//valor por defecto 50
 	game.boardGround("fondo2.jpg")
 
-	/*//Mapa
-	mapa.construir()*/
+	//Mapa
+	mapa.construir()
 
 	/*Instancias de clases Definidas
 	const manzana1 = new Manzana()

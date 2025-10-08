@@ -5,14 +5,14 @@ import pepita.*
 
 object manzanaFactory {
     method crear() {
-        new Manzana(position = randomizer.emptyPosition())
+        return new Manzana(position = randomizer.emptyPosition())
 
     }
 }
 
 object alpisteFactory {
     method crear() {
-        new Alpiste(position = randomizer.emptyPosition(), peso = (40 .. 100).anyOne())
+        return new Alpiste(position = randomizer.emptyPosition(), peso = (40 .. 100).anyOne())
 
     }
 }
