@@ -1,6 +1,8 @@
 import pepita.*
 import comidasClases.*
 import wollok.game.*
+import extras.*
+import mapa.*
 
 program tutorial3 {
     game.title("Pepita") 	//Valor por defecto "Wollok Game"
@@ -8,6 +10,9 @@ program tutorial3 {
 	game.width(10) 			//valor por defecto 5
 	game.cellSize(50) 		//valor por defecto 50
 	game.boardGround("fondo2.jpg")
+
+	/*//Mapa
+	mapa.construir()*/
 
 	/*Instancias de clases Definidas
 	const manzana1 = new Manzana()
