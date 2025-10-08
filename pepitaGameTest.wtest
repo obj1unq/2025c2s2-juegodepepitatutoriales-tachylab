@@ -1,7 +1,7 @@
 import pepita.*
 import comidas.*
 import comidasClases.*
-
+import randomizer.*
 
 
 describe "Tests de Pepita" {
@@ -25,8 +25,8 @@ describe "Test con clases" {
 	var manzana1
 	var alpiste1
 	method initialize() {
-		manzana1 = new Manzana()
-		alpiste1 = new Alpiste()
+		manzana1 = new Manzana(position = randomizer.emptyPosition())
+		alpiste1 = new Alpiste(position = randomizer.emptyPosition(), peso = (40 .. 100).anyOne())
 	}
 
 	test "Colision con pepita" {
