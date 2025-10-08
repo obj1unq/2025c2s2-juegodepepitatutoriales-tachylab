@@ -1,0 +1,37 @@
+import pepita.*
+import comidas.*
+import comidasClases.*
+import randomizer.*
+
+
+describe "Tests de Pepita" {
+
+
+	test "Al comer pepita aumenta su energia" {
+		pepita.comer(manzana)
+		assert.equals(105, pepita.energia())
+	}
+
+	test "Al volar pepita pierde energia" {
+		pepita.volar(1)
+		assert.equals(89, pepita.energia())
+	}
+
+
+
+}
+
+describe "Test con clases" {
+	var manzana1
+	var alpiste1
+	method initialize() {
+		manzana1 = new Manzana(position = randomizer.emptyPosition())
+		alpiste1 = new Alpiste(position = randomizer.emptyPosition(), peso = (40 .. 100).anyOne())
+	}
+
+	test "Colision con pepita" {
+		pepita.position(manzana1.position())
+		assert.equals(pepita.position(), manzana1.position())
+	}
+}
+
